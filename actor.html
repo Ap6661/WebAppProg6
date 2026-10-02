@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Actors</title>
+  </head>
+ 
+<body>
+
+<h2>Actors by Bosch</h2>
+
+<form>
+    <label for="actor">Petter Pan</label>
+    <input type="password" id="actor" name="actor" value="Robin Williams"> <br>
+
+    <label for="guess">Who is the actor</label>
+    <input type="text" id="guess" name="guess" autofocus> <br>
+
+    <input type="button" onclick="checkActor()" value="Check the guess">
+</form>
+
+
+<p id="result"></p>
+
+<script> 
+
+var correct = 0;
+var notCorrect = 0;
+
+function checkActor() {
+  actor = document.getElementById("actor").value;
+  guess = document.getElementById("guess").value;
+
+  if (actor == guess) {
+    alert("That's right")
+    correct += 1
+  } else {
+    alert("Better luck next time")
+    notCorrect += 1
+  }
+  out = document.getElementById("result");
+  out.innerHTML = `Correct: ${correct}<br/>Not Correct: ${notCorrect}`;
+}
+
+
+</script>
+
+</body>
+</html> 
