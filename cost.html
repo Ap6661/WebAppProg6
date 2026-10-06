@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+ 
+<body>
+
+<h2>Sales Computation</h2>
+
+<form>
+    <label for="numberItems">Enter number of items </label>
+    <input type ="number" id="numberItems" name="numberItems" value=1> <br/>
+
+    <label for="itemCost">Enter cost of one item </label>
+    <input type ="number" id="itemCost" name="itemCost" value=20.0 step=0.01> <br/>
+
+    <label for="numberForDiscount">Enter number to get discount </label>
+    <input type ="number" id="numberForDiscount" name="numberForDiscount" value=10> <br/>
+
+    <label for="discountRate">Enter the discount rate </label>
+    <input type ="number" id="discountRate" name="discountRate" value=0.15> <br/>
+
+    <input type="button" onclick="doDiscount()" value="Show Costs">
+</form>
+
+
+<p id="result"></p>
+
+<script> 
+
+function doDiscount() 
+{
+  var get = (id) => { return document.getElementById(id).value; };
+  var numbr = get("numberItems");
+  var cost = get("itemCost");
+  var discountRate = get("discountRate");
+  var discountAt = get("numberForDiscount");
+  var costs = ''
+
+  for (var checkCount = 2; checkCount <= 5*2; checkCount += 2) 
+  {
+    var c = cost * checkCount
+    if ( checkCount > discountAt ) {
+     c = (discountAt * cost) + ((checkCount - discountAt) * cost * (1 - discountRate))
+    }
+    costs = costs + `checkCount ${checkCount} is ${c};<br/>`
+  }
+  document.getElementById('result').innerHTML = costs
+}
+
+</script>
+
+</body>
+</html> 
