@@ -3,6 +3,43 @@
 
   <head>
     <title>Actors</title>
+
+    <script> 
+      var correct = 0;
+      var notCorrect = 0;
+
+      function checkActor() {
+        actor = document.getElementById("actor").value;
+        guess = document.getElementById("guess").value;
+
+        if (actor == guess) {
+          alert("That's right")
+          correct += 1
+        } else {
+          alert("Better luck next time")
+          notCorrect += 1
+        }
+        out = document.getElementById("result");
+        out.innerHTML = `Correct: ${correct}<br/>Not Correct: ${notCorrect}`;
+      }
+
+      var usePic = 0;
+      function updatePic() {
+        var newPic = '';
+        usePic = (usePic + 1) % 3
+        switch (usePic) {
+          case 0:
+            newPic = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffoodists.ca%2Fwp-content%2Fuploads%2F2009%2F03%2Fimg_5997edit.jpg&f=1&nofb=1&ipt=fc81846920b7e68a1e4111d08f4fc821fff0288209cb4f6577f074f2c36bfc5d';
+            break
+          case 1:
+            newPic = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbXcFc2%2FbtszCID0yRb%2FiUP5nCj7Xki3z6hocRz0zK%2Fimg.png&f=1&nofb=1&ipt=cb3d4de08d3845aabd1c8dc178f9cadc84466ac37ab90693971b53d23c5fe929';
+            break
+          case 2:
+            newPic = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fjooinn.com%2Fimages%2Flemon-half.jpg&f=1&nofb=1&ipt=72fd71f48fe530ca779256a6d4c65c81f8790eee02d89bd3a44bfe6e18fe75c8';
+        }
+        document.getElementById("foodImage").src = newPic;
+      }
+    </script>
   </head>
  
 <body>
@@ -22,28 +59,12 @@
 
 <p id="result"></p>
 
-<script> 
 
-var correct = 0;
-var notCorrect = 0;
-
-function checkActor() {
-  actor = document.getElementById("actor").value;
-  guess = document.getElementById("guess").value;
-
-  if (actor == guess) {
-    alert("That's right")
-    correct += 1
-  } else {
-    alert("Better luck next time")
-    notCorrect += 1
-  }
-  out = document.getElementById("result");
-  out.innerHTML = `Correct: ${correct}<br/>Not Correct: ${notCorrect}`;
-}
+<div>
+  <img id="foodImage" onclick=updatePic() width="150px" height="150px" src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffoodists.ca%2Fwp-content%2Fuploads%2F2009%2F03%2Fimg_5997edit.jpg&f=1&nofb=1&ipt=fc81846920b7e68a1e4111d08f4fc821fff0288209cb4f6577f074f2c36bfc5d'/>
+</div>
 
 
-</script>
 
 </body>
 </html> 
