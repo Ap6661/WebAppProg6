@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Meal Planner</title>
+</head>
+ 
+<body>
+
+<h2>Bosch: Meal Planner</h2>
+
+<form>
+
+    <input id='breakfast' type="checkbox" checked>
+    <label for="breakfast">Breakfast</label>
+    <br/>
+    <input id='lunch' type="checkbox">
+    <label for="lunch">Lunch</label>
+    <br/>
+    <input id='dinner' type="checkbox" checked>
+    <label for="dinner">Dinner</label>
+    <br/>
+
+    <input id='choose' value="Meal Plan Choices" type="button" onclick="choices()">
+</form>
+
+
+<p id="result"></p>
+
+<script> 
+
+var my_meal_plan = {};
+
+function choices() 
+{
+  my_meal_plan = {};
+  my_meal_plan.breakfast = document.getElementById('breakfast').checked;
+  my_meal_plan.lunch = document.getElementById('lunch').checked;
+  my_meal_plan.dinner = document.getElementById('dinner').checked;
+
+  document.getElementById('result').innerHTML = JSON.stringify(my_meal_plan);
+}
+</script>
+
+</body>
+</html> 
