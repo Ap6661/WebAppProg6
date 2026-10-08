@@ -24,6 +24,19 @@
 
 <p id="result"></p>
 
+
+<form>
+  <input type="radio" name="op" id="mul" value="mul" onclick="chooseOp()"/>
+  <label for="mul">Multiply</label><br/>
+  <input type="radio" name="op" id="add" value="add" onclick="chooseOp()"/>
+  <label for="add">Sum</label><br/>
+  <input type="radio" name="op" id="div" value="div" onclick="chooseOp()"/>
+  <label for="div">Divide</label><br/>
+</form>
+
+<p id="result2"></p>
+
+
 <script> 
 
 function doDiscount() 
@@ -44,6 +57,34 @@ function doDiscount()
     costs = costs + `checkCount ${checkCount} is ${c};<br/>`
   }
   document.getElementById('result').innerHTML = costs
+}
+
+function chooseOp() {
+  var get = (id) => { return Number(document.getElementById(id).value); };
+  var count = get("numberItems");
+  var discountAt = get("numberForDiscount");
+  var operator = document.querySelector('input[name="op"]:checked').value;
+
+  var output = 0;
+  var op = '';
+
+  switch (operator) {
+    case 'mul':
+      output = count * discountAt;
+      op = 'times'
+      break;
+    case 'add':
+      output = count + discountAt;
+      op = 'summed with'
+      break;
+    case 'div':
+      output = count / discountAt;
+      op = 'divided by'
+      break;
+  }
+
+  document.getElementById('result2').innerHTML = `${count} ${op} ${discountAt} is ${output}`
+
 }
 
 </script>
